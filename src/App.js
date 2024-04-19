@@ -6,15 +6,20 @@ import RepositoryList from './components/RepositoryList';
 import RepositoryDetails from './components/RepositoryDetails';
 import FollowersList from './components/FollowersList';
 
+export const config = {
+  endpoint: `https://api.github.com`,
+};
+
 const App = () => {
   const [user, setUser] = useState(null);
   const [repositories, setRepositories] = useState([]);
   const [repository, setRepository] = useState(null);
   const [followers, setFollowers] = useState([]);
 
+
   const handleSearch = async (username) => {
     try {
-      const { data: userData } = await axios.get(`https://api.github.com/users/${username}`);
+      const { data: userData } = await axios.get(`${config.endpoint}/users/${username}`);
       setUser(userData);
       setRepositories(userData.repositories);
     } catch (error) {
@@ -28,7 +33,7 @@ const App = () => {
 
   const handleFollowerClick = async (follower) => {
     try {
-      const { data: followerData } = await axios.get(`/api/users/${follower.login}`);
+      const { data: followerData } = await axios.get(`${config.endpoint}/api/users/${follower.login}`);
       setUser(followerData);
       setRepositories(followerData.repositories);
       setFollowers([]);
