@@ -1,0 +1,17 @@
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  form {
+    text-align: center;
+  }
+  
+  input[type="text"] {
+    margin-right: 10px;
+  }
+  
+  
+  
